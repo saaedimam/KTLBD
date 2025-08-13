@@ -194,7 +194,7 @@ const InteractiveImage = ({ src, alt, className }: InteractiveImageProps) => {
         
         {/* Instruction overlay - shows initially then fades */}
         {showInstructions && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity duration-500">
+          <div className="absolute inset-0 flex items-center justify-center bg-[#8B0000]/20 transition-opacity duration-500">
             <div className="bg-white/90 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg text-center">
               <div className="flex items-center justify-center gap-2 mb-1">
                 {isMobile ? (

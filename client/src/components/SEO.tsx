@@ -237,8 +237,8 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="pinterest:image" content={absoluteImageUrl} />
       
       {/* Additional SEO meta tags */}
-      <meta name="theme-color" content="#000000" />
-      <meta name="msapplication-TileColor" content="#000000" />
+      <meta name="theme-color" content="#8B0000" />
+      <meta name="msapplication-TileColor" content="#8B0000" />
       
       {/* JSON-LD structured data */}
       <script type="application/ld+json">

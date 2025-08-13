@@ -10,15 +10,15 @@
 -------------------------------- */
 /* Wrapper (Global) */
 #silktide-wrapper {
-              --focus: 0 0 0 2px #ffffff, 0 0 0 4px #000000, 0 0 0 6px #ffffff;
-              --boxShadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
+              --focus: 0 0 0 2px #ffffff, 0 0 0 4px #8B0000, 0 0 0 6px #ffffff;
+              --boxShadow: -5px 5px 10px 0px #8B000012, 0px 0px 50px 0px #8B00001a;
               --fontFamily: Helvetica Neue, Segoe UI, Arial, sans-serif;
-              --primaryColor: #000000;
+              --primaryColor: #8B0000;
               --backgroundColor: #ffffff;
               --textColor: #4b494b;
-              --backdropBackgroundColor: #00000033;
+              --backdropBackgroundColor: #8B000033;
               --backdropBackgroundBlur: 0px;
-              --cookieIconColor: #000000;
+              --cookieIconColor: #8B0000;
               --cookieIconBackgroundColor: #ffffff;
               position: fixed;
   bottom: 0;
@@ -133,7 +133,7 @@
   opacity: 0;
   animation: silktide-slideInDown 350ms ease-out forwards;
   animation-delay: 0.3s;
-  box-shadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
+  box-shadow: -5px 5px 10px 0px #8B000012, 0px 0px 50px 0px #8B00001a;
 }
 
 #silktide-banner:focus {
@@ -253,7 +253,7 @@
   transform: translate(0px, -20px);
   opacity: 0;
   animation: silktide-slideInUp-center 350ms ease-out forwards;
-  box-shadow: -5px 5px 10px 0px #00000012, 0px 0px 50px 0px #0000001a;
+  box-shadow: -5px 5px 10px 0px #8B000012, 0px 0px 50px 0px #8B00001a;
   font-family: var(--fontFamily);
   color: var(--textColor);
   flex-direction: column;
@@ -479,7 +479,7 @@
   border: none;
   background-color: var(--cookieIconColor);
   cursor: pointer;
-  box-shadow: 0px 0px 6px 0px #0000001a;
+  box-shadow: 0px 0px 6px 0px #8B00001a;
   pointer-events: auto;
   animation: silktide-fadeIn 0.3s ease-in-out forwards;
 }
