@@ -24,14 +24,14 @@ const EnhancedBlogContent: React.FC<EnhancedBlogContentProps> = ({ content }) =>
     switch (section.type) {
       case 'heading':
         return (
-          <h2 key={index} className="text-3xl font-bold mb-6 text-black border-b-2 border-black pb-2">
+          <h2 key={index} className="text-3xl font-bold mb-6 text-[var(--text)] border-b-2 border-[var(--brand-red)] pb-2">
             {section.content}
           </h2>
         );
       
       case 'subheading':
         return (
-          <h3 key={index} className="text-2xl font-semibold mb-4 text-black">
+          <h3 key={index} className="text-2xl font-semibold mb-4 text-[var(--text)]">
             {section.content}
           </h3>
         );
@@ -61,9 +61,9 @@ const EnhancedBlogContent: React.FC<EnhancedBlogContentProps> = ({ content }) =>
               const icons = [Shield, Zap, Settings, Database];
               const IconComponent = icons[itemIndex % icons.length];
               return (
-                <Card key={itemIndex} className="border-2 border-black">
+                <Card key={itemIndex} className="border-2 border-[var(--brand-red)]">
                   <CardContent className="p-4 flex items-start space-x-4">
-                    <div className="bg-black p-2 rounded-lg">
+                    <div className="bg-[var(--brand-red)] p-2 rounded-lg">
                       <IconComponent className="h-6 w-6 text-white" />
                     </div>
                     <p className="text-gray-800 leading-relaxed flex-1">{item}</p>
@@ -79,7 +79,7 @@ const EnhancedBlogContent: React.FC<EnhancedBlogContentProps> = ({ content }) =>
           <div key={index} className="mb-8">
             <ol className="list-none space-y-3">
               {section.items?.map((item, itemIndex) => (
-                <li key={itemIndex} className="text-gray-800 leading-relaxed text-sm bg-gray-50 p-3 rounded border-l-4 border-black">
+                <li key={itemIndex} className="text-gray-800 leading-relaxed text-sm bg-gray-50 p-3 rounded border-l-4 border-[var(--brand-red)]">
                   {item}
                 </li>
               ))}
@@ -93,12 +93,12 @@ const EnhancedBlogContent: React.FC<EnhancedBlogContentProps> = ({ content }) =>
             {section.statsData?.map((stat, statIndex) => {
               const IconComponent = iconMap[stat.icon as keyof typeof iconMap] || TrendingUp;
               return (
-                <Card key={statIndex} className="border-2 border-black text-center">
+                <Card key={statIndex} className="border-2 border-[var(--brand-red)] text-center">
                   <CardContent className="p-6">
-                    <div className="bg-black p-3 rounded-full inline-block mb-4">
+                    <div className="bg-[var(--brand-red)] p-3 rounded-full inline-block mb-4">
                       <IconComponent className="h-8 w-8 text-white" />
                     </div>
-                    <div className="text-3xl font-bold text-black mb-2">{stat.value}</div>
+                    <div className="text-3xl font-bold text-[var(--text)] mb-2">{stat.value}</div>
                     <div className="text-gray-700 font-medium">{stat.label}</div>
                   </CardContent>
                 </Card>
@@ -110,21 +110,21 @@ const EnhancedBlogContent: React.FC<EnhancedBlogContentProps> = ({ content }) =>
       case 'chart':
         if (!section.chartData) return null;
         
-        const colors = ['#000000', '#666666', '#999999', '#CCCCCC'];
+        const colors = ['var(--brand-red)', '#666666', '#999999', '#CCCCCC'];
         
         return (
-          <Card key={index} className="border-2 border-black mb-8">
+          <Card key={index} className="border-2 border-[var(--brand-red)] mb-8">
             <CardContent className="p-6">
-              <h4 className="text-xl font-semibold mb-4 text-black text-center">
+              <h4 className="text-xl font-semibold mb-4 text-[var(--text)] text-center">
                 {section.chartData.title}
               </h4>
               <div className="h-64 w-full">
                 {section.chartData.title.includes('Market Growth') ? (
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={section.chartData.data}>
-                      <XAxis dataKey="name" stroke="#000" />
-                      <YAxis stroke="#000" />
-                      <Bar dataKey="value" fill="#000000" />
+                      <XAxis dataKey="name" stroke="var(--brand-red)" />
+                      <YAxis stroke="var(--brand-red)" />
+                      <Bar dataKey="value" fill="var(--brand-red)" />
                     </BarChart>
                   </ResponsiveContainer>
                 ) : (
@@ -153,10 +153,10 @@ const EnhancedBlogContent: React.FC<EnhancedBlogContentProps> = ({ content }) =>
       case 'table':
         if (!section.tableData) return null;
         return (
-          <Card key={index} className="border-2 border-black mb-8 overflow-hidden">
+          <Card key={index} className="border-2 border-[var(--brand-red)] mb-8 overflow-hidden">
             <CardContent className="p-0">
               <table className="w-full">
-                <thead className="bg-black text-white">
+                <thead className="bg-[var(--brand-red)] text-white">
                   <tr>
                     {section.tableData.headers.map((header, headerIndex) => (
                       <th key={headerIndex} className="p-4 text-left font-semibold">
@@ -183,7 +183,7 @@ const EnhancedBlogContent: React.FC<EnhancedBlogContentProps> = ({ content }) =>
       
       case 'quote':
         return (
-          <Card key={index} className="border-2 border-black bg-black text-white mb-8">
+          <Card key={index} className="border-2 border-[var(--brand-red)] bg-[var(--brand-red)] text-white mb-8">
             <CardContent className="p-8 text-center">
               <blockquote className="text-xl italic font-medium">
                 "{section.content}"
