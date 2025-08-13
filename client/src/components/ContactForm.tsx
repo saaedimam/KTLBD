@@ -132,13 +132,13 @@ const ContactForm = () => {
     }
   };
 
-  return <section id="contact" className="bg-gradient-to-b from-white to-black text-white relative py-[25px]">
+  return <section id="contact" className="bg-gradient-to-b from-white to-[#8B0000] text-white relative py-[25px]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <div className="inline-block mb-3 px-3 py-1 bg-white text-black rounded-full text-sm font-medium">
+          <div className="inline-block mb-3 px-3 py-1 bg-white text-[#222] rounded-full text-sm font-medium">
             Get In Touch
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#222]">
             Contact Us Today
           </h2>
           <p className="text-gray-700 text-lg max-w-2xl mx-auto">
@@ -147,7 +147,7 @@ const ContactForm = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="bg-white rounded-xl shadow-xl p-8 border border-gray-700 text-black">
+          <div className="bg-white rounded-xl shadow-xl p-8 border border-gray-700 text-[#222]">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField control={form.control} name="name" render={({
@@ -208,7 +208,7 @@ const ContactForm = () => {
                       </FormControl>
                     </FormItem>} />
                 
-                <button type="submit" disabled={isSubmitting} className="w-full bg-black hover:bg-gray-800 text-white py-3 px-6 rounded-md transition-colors flex items-center justify-center disabled:opacity-70">
+                <button type="submit" disabled={isSubmitting} className="w-full bg-[#8B0000] hover:bg-[#8B0000]/90 text-white py-3 px-6 rounded-md transition-colors flex items-center justify-center disabled:opacity-70">
                   {isSubmitting ? "Sending..." : <>
                       Send Message
                       <Send className="ml-2 h-4 w-4" />
@@ -219,13 +219,13 @@ const ContactForm = () => {
           </div>
           
           <div className="space-y-8">
-            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-700 text-black">
-              <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center text-white mb-4">
+            <div className="bg-white p-6 rounded-lg shadow-md border border-gray-700 text-[#222]">
+              <div className="w-12 h-12 bg-[#8B0000] rounded-full flex items-center justify-center text-white mb-4">
                 <Mail className="h-6 w-6" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Email Us</h3>
               <p className="text-gray-600 mb-2">For general inquiries:</p>
-              <a href="mailto:info@wrlds.com" className="text-blue-500 hover:underline">hello@wrlds.com</a>
+              <a href="mailto:info@wrlds.com" className="text-[#0EA5A5] hover:underline">hello@wrlds.com</a>
               <p className="text-gray-600 mt-2 mb-2">
             </p>
             </div>

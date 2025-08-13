@@ -42,7 +42,7 @@ const ProjectPageLayout: React.FC<ProjectPageLayoutProps> = ({
             className="absolute inset-0 bg-cover bg-center" 
             style={{ backgroundImage: `url(${imageUrl})` }}
           ></div>
-          <div className={`absolute inset-0 ${darkMode ? 'bg-black/70' : 'bg-white/70'}`}></div>
+          <div className={`absolute inset-0 ${darkMode ? 'bg-[#8B0000]/70' : 'bg-white/70'}`}></div>
           
           <div className="absolute inset-0 flex flex-col items-center justify-center p-4 z-10">
             <motion.div 
