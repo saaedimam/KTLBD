@@ -1,11 +1,8 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from 'wouter';
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { Clickable } from "./Clickable";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,10 +50,10 @@ const Navbar = () => {
       transition={{ duration: 0.22, ease: [0.2, 0.8, 0.2, 1] }}
     >
       <div className="w-full px-4 sm:px-6 lg:px-8 mx-auto">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-12">
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center">
-              <span className={cn("text-xl font-bold", isScrolled ? "text-[#8B0000]" : "text-white")}>KTL</span>
+              <span className={cn("text-lg font-bold", isScrolled ? "text-[#8B0000]" : "text-white")}>KTL</span>
             </Link>
           </div>
           
@@ -67,7 +64,7 @@ const Navbar = () => {
               <Link 
                 to="/"
                 className={cn(
-                  "px-4 py-2 rounded-md transition-all duration-140 fx-underlineSlide fx-pop",
+                  "px-3 py-1.5 rounded-md transition-all duration-140 fx-underlineSlide fx-pop text-sm",
                   isScrolled 
                     ? "text-gray-700 hover:text-gray-900 hover:opacity-92" 
                     : "text-white hover:opacity-92"
@@ -81,7 +78,7 @@ const Navbar = () => {
               <button 
                 onClick={() => scrollToSection('certifications')}
                 className={cn(
-                  "px-4 py-2 rounded-md transition-all duration-140 fx-underlineSlide fx-pop",
+                  "px-3 py-1.5 rounded-md transition-all duration-140 fx-underlineSlide fx-pop text-sm",
                   isScrolled 
                     ? "text-gray-700 hover:text-gray-900 hover:opacity-92" 
                     : "text-white hover:opacity-92"
@@ -95,7 +92,7 @@ const Navbar = () => {
               <button 
                 onClick={() => scrollToSection('clients')}
                 className={cn(
-                  "px-4 py-2 rounded-md transition-all duration-140 fx-underlineSlide fx-pop",
+                  "px-3 py-1.5 rounded-md transition-all duration-140 fx-underlineSlide fx-pop text-sm",
                   isScrolled 
                     ? "text-gray-700 hover:text-gray-900 hover:opacity-92" 
                     : "text-white hover:opacity-92"
@@ -109,7 +106,7 @@ const Navbar = () => {
               <button 
                 onClick={() => scrollToSection('contact')}
                 className={cn(
-                  "px-4 py-2 rounded-md transition-all duration-140 fx-underlineSlide fx-pop",
+                  "px-3 py-1.5 rounded-md transition-all duration-140 fx-underlineSlide fx-pop text-sm",
                   isScrolled 
                     ? "text-gray-700 hover:text-gray-900 hover:opacity-92" 
                     : "text-white hover:opacity-92"
@@ -122,7 +119,7 @@ const Navbar = () => {
               {/* Careers - Primary CTA */}
               <Link 
                 to="/careers"
-                className="px-6 py-2 mx-2 rounded-md button-primary fx-bounceGlow text-white"
+                className="px-4 py-1.5 mx-2 rounded-md button-primary fx-bounceGlow text-white text-sm"
                 data-testid="button-careers"
               >
                 Careers
@@ -131,7 +128,7 @@ const Navbar = () => {
               {/* Investor Info - Secondary CTA */}
               <Link 
                 to="/investors"
-                className="px-6 py-2 rounded-md button-secondary fx-rippleBlue text-white"
+                className="px-4 py-1.5 rounded-md button-secondary fx-rippleBlue text-white text-sm"
                 data-testid="button-investors"
               >
                 Investor Info
@@ -144,27 +141,31 @@ const Navbar = () => {
             <button 
               onClick={toggleMenu} 
               className={cn(
-                "focus:outline-none p-2 ham",
+                "focus:outline-none p-1 ham w-6 h-4 relative",
                 isMenuOpen ? "active" : "",
                 isScrolled ? "text-gray-700" : "text-white"
               )}
               data-testid="button-menu"
             >
-              <span></span>
-              <span></span>
-              <span></span>
+              <span className="absolute left-0 right-0 h-0.5 bg-current transition-all duration-240 ease-[cubic-bezier(0.2,0.8,0.2,1)] top-0"></span>
+              <span className="absolute left-0 right-0 h-0.5 bg-current transition-all duration-240 ease-[cubic-bezier(0.2,0.8,0.2,1)] top-1.5"></span>
+              <span className="absolute left-0 right-0 h-0.5 bg-current transition-all duration-240 ease-[cubic-bezier(0.2,0.8,0.2,1)] bottom-0"></span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation Menu - Slides from top with stagger animation */}
-      <div className={cn("md:hidden mobile-drawer w-full", isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0", "overflow-hidden")}>
-        <div className="bg-white px-4 pt-4 pb-4 shadow-lg">
-          <div className="space-y-3">
+      {/* Mobile Navigation Menu */}
+      <div className={cn(
+        "md:hidden mobile-drawer w-full transition-all duration-260 ease-[cubic-bezier(0.2,0.8,0.2,1)]", 
+        isMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0", 
+        "overflow-hidden"
+      )}>
+        <div className="bg-white px-4 pt-3 pb-3 shadow-lg">
+          <div className="space-y-2">
             <Link 
               to="/" 
-              className="block px-4 py-3 text-[#222] hover:bg-gray-50 rounded-md text-sm min-h-11"
+              className="block px-3 py-2 text-[#222] hover:bg-gray-50 rounded-md text-sm min-h-9"
               onClick={() => {
                 setIsMenuOpen(false);
                 window.scrollTo(0, 0);
@@ -176,7 +177,7 @@ const Navbar = () => {
             
             <button 
               onClick={() => scrollToSection('certifications')} 
-              className="block w-full text-left px-4 py-3 text-[#222] hover:bg-gray-50 rounded-md text-sm min-h-11"
+              className="block w-full text-left px-3 py-2 text-[#222] hover:bg-gray-50 rounded-md text-sm min-h-9"
               data-testid="mobile-nav-certifications"
             >
               Certifications
@@ -184,7 +185,7 @@ const Navbar = () => {
             
             <button 
               onClick={() => scrollToSection('clients')} 
-              className="block w-full text-left px-4 py-3 text-[#222] hover:bg-gray-50 rounded-md text-sm min-h-11"
+              className="block w-full text-left px-3 py-2 text-[#222] hover:bg-gray-50 rounded-md text-sm min-h-9"
               data-testid="mobile-nav-clients"
             >
               Clients
@@ -192,17 +193,17 @@ const Navbar = () => {
             
             <button 
               onClick={() => scrollToSection('contact')} 
-              className="block w-full text-left px-4 py-3 text-[#222] hover:bg-gray-50 rounded-md text-sm min-h-11"
+              className="block w-full text-left px-3 py-2 text-[#222] hover:bg-gray-50 rounded-md text-sm min-h-9"
               data-testid="mobile-nav-contact"
             >
               Contact
             </button>
             
             {/* CTAs stacked at bottom */}
-            <div className="pt-4 space-y-2">
+            <div className="pt-3 space-y-2">
               <Link 
                 to="/careers" 
-                className="block w-full px-4 py-3 button-primary text-white text-center rounded-md text-sm min-h-11"
+                className="block w-full px-3 py-2 button-primary text-white text-center rounded-md text-sm min-h-9"
                 onClick={() => setIsMenuOpen(false)}
                 data-testid="mobile-button-careers"
               >
@@ -211,7 +212,7 @@ const Navbar = () => {
               
               <Link 
                 to="/investors" 
-                className="block w-full px-4 py-3 button-secondary text-white text-center rounded-md text-sm min-h-11"
+                className="block w-full px-3 py-2 button-secondary text-white text-center rounded-md text-sm min-h-9"
                 onClick={() => setIsMenuOpen(false)}
                 data-testid="mobile-button-investors"
               >
