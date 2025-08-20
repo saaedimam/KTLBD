@@ -5,4 +5,15 @@ run = "node index.js"
 channel = "stable-25_05"
 
 [deployment]
-run = ["sh", "-c", "node index.js"]
+run = ["sh", "-c", "npx http-server -p 5000 -a 0.0.0.0"]
+
+[workflows]
+runButton = "Iori 1"
+
+[[workflows.workflow]]
+name = "Iori 1"
+mode = "sequential"
+author = 46678806
+
+[[workflows.workflow.tasks]]
+task = "packager.installForAll"
