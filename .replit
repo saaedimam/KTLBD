@@ -17,3 +17,11 @@ author = 46678806
 
 [[workflows.workflow.tasks]]
 task = "packager.installForAll"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm install"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "node index.js"
