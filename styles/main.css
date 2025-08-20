@@ -701,6 +701,50 @@ textarea:focus-visible{
   transform: translateY(0);
 }
 
+/* Blob Divider */
+.blob-divider {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  margin: 40px 0;
+}
+
+.blob-divider svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.blob-divider .blob {
+  fill: var(--accent);
+  opacity: 0.1;
+  transition: all 0.3s ease;
+}
+
+.blob-divider:hover .blob {
+  opacity: 0.15;
+  transform: translateY(-2px);
+}
+
+/* Blob variations */
+.blob-divider.primary .blob {
+  fill: var(--red);
+  opacity: 0.08;
+}
+
+.blob-divider.secondary .blob {
+  fill: var(--stairs-level-2);
+  opacity: 0.1;
+}
+
+.blob-divider.gradient .blob {
+  fill: url(#blobGradient);
+  opacity: 0.12;
+}
+
 /* Optional enhancements */
 .btn-ghost{
   background: transparent;
