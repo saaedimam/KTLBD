@@ -1,0 +1,46 @@
+name: Deploy to Vercel
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - name: Install dependencies
+      run: |
+        if [ -f package.json ]; then
+          npm ci
+        fi
+    - name: Build project
+      run: |
+        if [ -f package.json ] && npm run | grep -q "build"; then
+          npm run build
+        fi
+    - name: Static fallback (create public/ if no build)
+      run: |
+        # If dist exists from build, copy it to public/
+        if [ -d dist ]; then
+          rsync -a dist/ public/
+        fi
+        # If public/ still doesn't exist, create it and copy all static files
+        if [ ! -d public ]; then
+          mkdir -p public
+          shopt -s extglob dotglob
+          rsync -a --exclude .git --exclude .github --exclude node_modules --exclude public --exclude dist ./ public/
+        fi
+    - name: Deploy to Vercel
+      uses: amondnet/vercel-action@v20
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }}
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-args: '--prod'
+        working-directory: public
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
