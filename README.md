@@ -1,42 +1,46 @@
-# Rest Express App
+# KTL Vanilla JS Website
 
-This project provides a minimal Express server with a Vite-powered React client.
-It includes a health-check API and type-safe environment configuration using
-[Zod](https://github.com/colinhacks/zod).
+Assumption: demo API and form endpoints use public services (`jsonplaceholder.typicode.com` and `httpbin.org`). Replace with real services for production.
 
 ## Setup
 
-1. Install dependencies:
+1. **Install dependencies** – none required.
+2. **Create `.env`** by copying `.env.example` and update values as needed.
+3. **Build config**:
    ```bash
-   npm install
+   npm run build
    ```
-2. Copy `.env.example` to `.env` and adjust as needed.
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
+Serve the Vanilla-JS-site- folder with any static server:
 
-## Available Scripts
-
-- `npm run dev` – start the server and Vite in development mode.
-- `npm run build` – build the client and bundle the server for production.
-- `npm start` – run the compiled server.
-- `npm run check` – run TypeScript type checks.
-- `npm test` – execute the test suite.
+```bash
+npx http-server -p 8080
+# or
+python3 -m http.server 8080
+```
+Visit http://localhost:8080.
 
 ## Environment Variables
 
-| Name            | Default                                                         | Description                      |
-|-----------------|-----------------------------------------------------------------|----------------------------------|
-| `NODE_ENV`      | `development`                                                   | Node environment mode            |
-| `PORT`          | `5000`                                                          | Port the server listens on       |
-| `DATABASE_URL`  | `postgresql://user:password@localhost:5432/appdb`               | Database connection string       |
-| `SESSION_SECRET`| `default_session_secret`                                        | Secret for session signing       |
+| Variable | Description |
+| --- | --- |
+| NEWS_API_URL | Endpoint returning JSON news data |
+| CONTACT_ENDPOINT | POST endpoint for contact form |
+| CONTACT_EMAIL | Fallback email for contact form |
+| RFQ_ENDPOINT | POST endpoint for RFQ form |
+| RFQ_EMAIL | Fallback email for RFQ form |
 
-## API
+## Deployment
 
-- `GET /api/health` – returns `{ "status": "ok" }`.
+Run `npm run build` to generate `scripts/config.js` with production values.
 
-## License
+Upload the directory to a static host (e.g., Netlify, Vercel, S3).
 
-MIT
+Ensure `.env` is not uploaded; only the generated `scripts/config.js` is served.
+
+## Notes
+
+Accessible, responsive design meeting WCAG 2.1 AA guidelines.
+
+Forms gracefully fall back to mailto: when endpoints are not set.
+
+API errors are logged to the console and surfaced in the UI.
