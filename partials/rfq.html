@@ -1,0 +1,83 @@
+
+<article class="reveal">
+  <div class="page-header">
+    <h1 class="kinetic-title">Request a Quote</h1>
+    <p class="page-subtitle">Get a customized quote for your textile manufacturing needs</p>
+  </div>
+
+  <div class="rfq-background">
+    <img src="assets/rfq-schematic.png" alt="Futuristic garment blueprint with CAD overlay" class="rfq-schematic">
+  </div>
+
+  <div class="rfq-form-container">
+    <form class="form glow-form" id="rfq-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="rfq-company">Company *</label>
+          <input type="text" id="rfq-company" name="company" required class="form-input">
+        </div>
+        
+        <div class="form-group">
+          <label for="rfq-name">Contact Person *</label>
+          <input type="text" id="rfq-name" name="name" required class="form-input">
+        </div>
+        
+        <div class="form-group">
+          <label for="rfq-email">Email *</label>
+          <input type="email" id="rfq-email" name="email" required class="form-input">
+        </div>
+        
+        <div class="form-group">
+          <label for="rfq-phone">Phone</label>
+          <input type="tel" id="rfq-phone" name="phone" class="form-input">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="product-type">Product Type *</label>
+        <select id="product-type" name="product-type" required class="form-input">
+          <option value="">Select product type</option>
+          <option value="knitwear">Knitwear</option>
+          <option value="uniforms">Uniforms</option>
+          <option value="woven">Woven Garments</option>
+          <option value="schoolwear">Schoolwear</option>
+          <option value="sportswear">Sportswear</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="quantity">Quantity *</label>
+          <input type="number" id="quantity" name="quantity" required class="form-input" min="100">
+        </div>
+        
+        <div class="form-group">
+          <label for="target-price">Target Price (USD)</label>
+          <input type="number" id="target-price" name="target-price" class="form-input" step="0.01">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="delivery-date">Required Delivery Date</label>
+        <input type="date" id="delivery-date" name="delivery-date" class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label for="specifications">Product Specifications</label>
+        <textarea id="specifications" name="specifications" rows="4" class="form-input" placeholder="Please provide detailed specifications, materials, colors, sizes, etc."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="additional-info">Additional Information</label>
+        <textarea id="additional-info" name="additional-info" rows="3" class="form-input" placeholder="Any additional requirements, special instructions, or questions"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary magnetic glow-btn">
+        Submit RFQ
+      </button>
+    </form>
+    
+    <div class="status" aria-live="polite"></div>
+  </div>
+</article>

@@ -1,0 +1,92 @@
+You are Replit AI acting as a full-stack creative web team (designer + developer + illustrator).  
+Your task is to **build and polish a futuristic landing + corporate website** for **Kattali Textile Ltd. (KTL)**, a Bangladesh-based textile manufacturing company.  
+Use only **Vanilla HTML, CSS, and JavaScript** (no frameworks).  
+
+================================================================
+📌 COMPANY INFO (for context, copy into About/Content)
+- Name: Kattali Textile Ltd.
+- Location: Chattogram, Bangladesh
+- Factory Capacity: 12 production lines, 850+ workers
+- Product Types: Knitwear, uniforms, woven garments, schoolwear, and sportswear
+- Export Market: USA, Canada, UK
+- Certifications: OEKO-TEX, ISO 9001
+- Mission: Ethical, sustainable, high-quality garment manufacturing for global buyers.
+================================================================
+
+🎯 GOALS
+1. Create a **futuristic, animated, and interactive** corporate site.
+2. Landing page should be **visually stunning** with **illustrated hero + animated textile graphics**.
+3. Each section should recommend **illustration/background asset ideas** (so I can later generate images in MidJourney/Leonardo).
+4. Include **stairs menu style (from uploaded ref)** + futuristic effects (liquid nav, spotlight cursor, blob dividers, 3D tilt cards, glowing charts, confetti on forms).
+5. Must be **accessible, responsive, WCAG AA compliant**, and optimized for static hosting.
+6. All animations must respect **prefers-reduced-motion**.
+
+================================================================
+📌 SITE STRUCTURE (partials)
+- Home (hero, marquee highlights, blob dividers)
+- About Us (story, capacity, team illustration)
+- Sustainability (green energy, recycling, factory eco-illustrations)
+- Certifications (grid with icons + glowing borders)
+- Clients (logos carousel with futuristic glow)
+- Impact Stories (case studies with tilt cards + textile/factory illustrations)
+- Careers (job listings, futuristic workspace illustration)
+- News (auto-loaded feed, illustrated “newsroom” background)
+- Contact (form with confetti, Bangladesh map illustration)
+- RFQ (request form with futuristic textile schematic background)
+- Investors (mini glowing line chart + gooey button group)
+- Privacy, Terms
+
+================================================================
+📌 ILLUSTRATION / BACKGROUND RECOMMENDATIONS
+For each section, also **output illustration prompts** (ready for MidJourney/Leonardo):
+- **Hero**: “Futuristic textile factory with glowing production lines and digital threads weaving into a city skyline, neon accents, cinematic wide shot.”
+- **About Us**: “Factory floor with operators, sustainable textile machines, blended with holographic overlays.”
+- **Sustainability**: “Eco-friendly garment production with solar panels, green fields, recycling loops, futuristic eco-city vibe.”
+- **Certifications**: “Glowing badges/icons (ISO, OEKO-TEX) floating in glass panels with neon grids.”
+- **Clients**: “Abstract map with glowing trade routes (Bangladesh to USA/Canada/UK).”
+- **Impact**: “Happy workers + modern garment lines with holographic productivity dashboards.”
+- **Careers**: “Young professionals in futuristic textile office, minimalistic glowing workspace.”
+- **News**: “Digital newsroom hologram with floating text panels.”
+- **Contact**: “Stylized Bangladesh map glowing in red/teal, futuristic communication lines.”
+- **RFQ**: “Schematic blueprint of garment + futuristic CAD overlay.”
+- **Investors**: “Glowing financial chart with textile threads turning into rising lines.”
+
+================================================================
+📌 FEATURES TO IMPLEMENT
+- **Liquid Nav Bar** with spotlight cursor + stairs animation.
+- **Kinetic Typography** headings (letter animations).
+- **Blob Gradient Dividers** between sections.
+- **3D Tilt & Magnetic Cards** for products/stories.
+- **Ribbon Marquee** for highlights.
+- **Gooey Buttons** for grouped actions (Investors).
+- **Scroll Progress Bar** at top.
+- **Confetti + Subtle Sound FX** on form submission.
+- **Investors Glowing Chart** (Canvas, glow trail).
+- **Route Prefetch & Skeleton loaders** for SPA-like speed.
+- **Dark/Light theme toggle** (auto accent shift).
+
+================================================================
+📌 TECH RULES
+- No React, no frameworks — only Vanilla HTML/CSS/JS.
+- Must output **FULL project structure** with:
+  ./index.html  
+  ./styles/main.css  
+  ./scripts/main.js  
+  ./scripts/router.js  
+  ./scripts/stocks.js  
+  ./partials/*.html (all pages above)  
+  ./scripts/config.js (from env vars)  
+- Include asset placeholders like `<img src="assets/about-illustration.png" alt="...">`.
+- Use semantic HTML + ARIA.
+- Optimize for static hosting (Netlify, Vercel, S3).
+
+================================================================
+📌 DELIVERABLE FORMAT
+For each file:  
+=== FILE: path/to/file ===  
+<full content>
+
+After all files, output a section titled **🎨 Illustration Prompts** with the exact asset generation prompts (for MidJourney/Leonardo).
+
+================================================================
+BEGIN NOW. Generate all code + asset prompts.
