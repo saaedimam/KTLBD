@@ -1,46 +1,45 @@
-# KTL Vanilla JS Website
+# WEB20
 
-Assumption: demo API and form endpoints use public services (`jsonplaceholder.typicode.com` and `httpbin.org`). Replace with real services for production.
+This project is a simple static web application built with HTML, CSS, and TypeScript bundled via Webpack.
+It includes:
 
-## Setup
+- A GitHub Pages workflow to deploy the site on every push to `main`.
+- A GHCR workflow to build a production-ready Nginx image of the `dist/` output.
+- A Vercel workflow for production deployments and preview URLs on pull requests.
 
-1. **Install dependencies** – none required.
-2. **Create `.env`** by copying `.env.example` and update values as needed.
-3. **Build config**:
-   ```bash
-   npm run build
-   ```
-Serve the Vanilla-JS-site- folder with any static server:
+## Quick start
 
-```bash
-npx http-server -p 8080
-# or
-python3 -m http.server 8080
+Install dependencies and run a development server:
+
+```sh
+npm install
+npm run build
+npx serve dist
 ```
-Visit http://localhost:8080.
-
-## Environment Variables
-
-| Variable | Description |
-| --- | --- |
-| NEWS_API_URL | Endpoint returning JSON news data |
-| CONTACT_ENDPOINT | POST endpoint for contact form |
-| CONTACT_EMAIL | Fallback email for contact form |
-| RFQ_ENDPOINT | POST endpoint for RFQ form |
-| RFQ_EMAIL | Fallback email for RFQ form |
 
 ## Deployment
 
-Run `npm run build` to generate `scripts/config.js` with production values.
+### GitHub Pages
 
-Upload the directory to a static host (e.g., Netlify, Vercel, S3).
+This repository contains a `.github/workflows/pages.yml` workflow that automatically builds the project (if a `package.json` and build script are present) and publishes the `dist/` or `public/` folder to GitHub Pages.  To enable Pages, go to **Settings → Pages** and set the source to **GitHub Actions**.
 
-Ensure `.env` is not uploaded; only the generated `scripts/config.js` is served.
+### Docker (GHCR)
 
-## Notes
+Use the `Dockerfile.nginx` to produce a lean Nginx image that serves the compiled project.  The `.github/workflows/docker-ghcr.yml` workflow builds and pushes the image to GitHub's container registry.
 
-Accessible, responsive design meeting WCAG 2.1 AA guidelines.
+Run the image locally:
 
-Forms gracefully fall back to mailto: when endpoints are not set.
+```sh
+docker run -p 8080:80 ghcr.io/YOUR_USERNAME/web20:latest
+```
 
-API errors are logged to the console and surfaced in the UI.
+### Vercel
+
+A `.github/workflows/vercel.yml` workflow is provided for deployment to Vercel.  It installs dependencies, builds the project, and ensures that a `public/` directory exists before deploying using the `amondnet/vercel-action`.  Configure `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` as repository secrets.  See `vercel.json` for build configuration.
+
+## Support files
+
+- `.nvmrc` pins the Node.js version to v20 for consistency across local and CI environments.
+- `404.html` provides a single page app fallback for client-side routing.
+
+Feel free to adjust the build commands and output directories according to your own tooling.
