@@ -1,0 +1,50 @@
+You are Replit AI, acting as a senior front-end engineer. Update a Vanilla JS static website (no frameworks) to add an animated “Stairs Menu” navigation system. Output **all complete files**: index.html, styles/main.css, scripts/main.js, scripts/router.js, and any new files needed. Do not leave placeholders; give full working code for each file.
+
+PROJECT STRUCTURE
+./
+ ├─ index.html
+ ├─ styles/main.css
+ ├─ scripts/main.js
+ ├─ scripts/router.js
+ ├─ partials/ (HTML fragments for each route: about.html, clients.html, sustainability.html, etc.)
+
+GOAL
+1. Implement a **Stairs Menu** navigation:
+   - Mobile: 3 offset bars (stairs icon). When toggled, bars step right. Drawer opens with staggered animation of nav items.
+   - Desktop: active link has “stairs underline” animation; hover previews it.
+   - Each link has data-level="1|2|3" for tint variations.
+2. Maintain all routes. Active link syncs with the router (hash-based navigation).
+3. Accessibility: ARIA attributes, keyboard nav, reduced-motion safe.
+4. 100% static — only HTML, CSS, JS. No React, Next, Vue, or external libraries.
+
+TASKS
+- Replace the header/nav in index.html with the stairs menu structure.
+- Append stairs menu styles to styles/main.css.
+- In scripts/main.js, add JS to handle nav toggle, staggered animation, and active-link syncing.
+- In scripts/router.js, ensure after each route load, `KTL.observeReveals()` is called for IntersectionObserver reveals.
+- Keep all other functions (forms, footer year, router) working.
+
+CONSTRAINTS
+- No external dependencies. Only plain HTML/CSS/JS.
+- WCAG 2.1 AA friendly.
+- Respect prefers-reduced-motion.
+- Show full code for each file, not snippets.
+
+ACCEPTANCE CRITERIA
+- Mobile drawer opens/closes with stair step effect.
+- Desktop hover shows animated stairs underline; active link stays highlighted with tinted gradient based on data-level.
+- Active link updates when navigating between routes.
+- Animations respect reduced-motion setting.
+- No console errors.
+
+TEST PLAN
+1. Load #/ (Home). Toggle stairs menu. Items appear staggered.
+2. Navigate to #/about, #/investors. Active underline changes correctly.
+3. Resize <880px for mobile drawer, >880px for desktop underline.
+4. Enable reduced motion in system settings; verify subdued animations.
+5. Keyboard navigation: Tab to stairs toggle, press Enter/Space, then Tab through links.
+
+DELIVERABLE
+Output the **complete project folder** with the above functionality implemented in index.html, main.css, main.js, and router.js.
+
+BEGIN NOW.
