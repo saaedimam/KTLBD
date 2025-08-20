@@ -1,0 +1,5 @@
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy pre-built assets.  Use dist/ if it exists, otherwise public/.
+COPY dist/ /usr/share/nginx/html
+COPY public/ /usr/share/nginx/html
