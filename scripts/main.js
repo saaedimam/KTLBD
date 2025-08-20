@@ -1,16 +1,55 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
-  const btn = document.querySelector(".nav-toggle");
-  const nav = document.querySelector(".site-nav");
-  if (btn && nav){
-    btn.addEventListener("click", () => {
-      const open = nav.classList.toggle("open");
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
+  // Stairs Menu Toggle
+  const stairsToggle = document.querySelector(".stairs-toggle");
+  const stairsNav = document.querySelector(".stairs-nav");
+  const navBackdrop = document.querySelector(".nav-backdrop");
+  
+  if (stairsToggle && stairsNav) {
+    stairsToggle.addEventListener("click", () => {
+      const isOpen = stairsNav.classList.toggle("open");
+      stairsToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    // Close nav when clicking backdrop
+    if (navBackdrop) {
+      navBackdrop.addEventListener("click", () => {
+        stairsNav.classList.remove("open");
+        stairsToggle.setAttribute("aria-expanded", "false");
+      });
+    }
+
+    // Close nav when clicking nav links
+    const navLinks = document.querySelectorAll(".nav-link");
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        stairsNav.classList.remove("open");
+        stairsToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Keyboard navigation
+    stairsToggle.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        stairsToggle.click();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && stairsNav.classList.contains("open")) {
+        stairsNav.classList.remove("open");
+        stairsToggle.setAttribute("aria-expanded", "false");
+        stairsToggle.focus();
+      }
     });
   }
 
+  // Intersection Observer for reveals
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -24,7 +63,56 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.reveal:not(.visible)').forEach(el => observer.observe(el));
   }
 
-  window.KTL = Object.assign(window.KTL || {}, { observeReveals, handleFormSubmit, initView });
+  // Update active navigation link
+  function updateActiveLink() {
+    const currentRoute = getRoute();
+    const navLinks = document.querySelectorAll(".nav-link");
+    
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      const href = link.getAttribute("href");
+      if (href === `#${currentRoute}`) {
+        link.classList.add("active");
+      }
+    });
+  }
+
+  // Get current route from hash
+  function getRoute() {
+    const hash = location.hash || "#/";
+    const path = hash.replace(/^#/, "");
+    const routes = {
+      "/": "/",
+      "/about": "/about",
+      "/sustainability": "/sustainability",
+      "/certifications": "/certifications",
+      "/clients": "/clients",
+      "/impact": "/impact",
+      "/investors": "/investors",
+      "/careers": "/careers",
+      "/news": "/news",
+      "/contact": "/contact",
+      "/rfq": "/rfq",
+      "/privacy": "/privacy",
+      "/terms": "/terms"
+    };
+    return routes[path] ? path : "/";
+  }
+
+  // Initialize active link on page load
+  updateActiveLink();
+
+  // Update active link on route changes
+  window.addEventListener("hashchange", updateActiveLink);
+
+  // Global functions
+  window.KTL = Object.assign(window.KTL || {}, { 
+    observeReveals, 
+    handleFormSubmit, 
+    initView,
+    updateActiveLink
+  });
+  
   observeReveals();
 });
 
@@ -44,7 +132,7 @@ async function handleFormSubmit(e, {endpoint, mailto}){
         body: JSON.stringify(data)
       });
       if (!res.ok) throw new Error("Request failed");
-      status.textContent = "Thanks! We’ll get back to you shortly.";
+      status.textContent = "Thanks! We'll get back to you shortly.";
       form.reset();
     }else if (mailto){
       const q = new URLSearchParams(data).toString();

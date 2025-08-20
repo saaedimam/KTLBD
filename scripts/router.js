@@ -1,3 +1,4 @@
+
 const routes = {
   "/": "home.html",
   "/about": "about.html",
@@ -49,6 +50,9 @@ async function loadView(route){
     }
     if (window.KTL && typeof KTL.initView === "function"){
       KTL.initView(route);
+    }
+    if (window.KTL && typeof KTL.updateActiveLink === "function"){
+      KTL.updateActiveLink();
     }
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
