@@ -1,0 +1,6 @@
+services:
+  ktlbdreplic1:
+    image: ktlbdreplic1
+    build:
+      context: .
+      dockerfile: ./Dockerfile
