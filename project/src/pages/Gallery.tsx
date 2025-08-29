@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ResponsiveImage from '../components/ResponsiveImage';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Gallery = () => {
@@ -173,10 +174,12 @@ const Gallery = () => {
                 className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
                 onClick={() => openModal(index)}
               >
-                <img
+                <ResponsiveImage
                   src={image.src}
                   alt={image.title}
                   className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
+                  fit="cover"
+                  sizes="(min-width:1280px) 25vw, (min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -222,10 +225,13 @@ const Gallery = () => {
             </button>
 
             {/* Image */}
-            <img
+            <ResponsiveImage
               src={filteredImages[selectedImage].src}
               alt={filteredImages[selectedImage].title}
               className="max-w-full max-h-full object-contain rounded-lg"
+              fit="contain"
+              priority
+              sizes="100vw"
             />
 
             {/* Image Info */}
