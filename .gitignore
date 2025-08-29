@@ -1,39 +1,60 @@
-# Dependencies
+# Node dependencies
 node_modules/
-.pnp
-.pnp.js
+.pnpm-store/
 
-# Testing
-coverage/
-
-# Build outputs
+# Production builds
 dist/
 build/
+
+# Vite
+.vite/
+
+# Next.js
 .next/
 out/
+.next/cache/
 
-# Local env files
-.env
-.env.local
-.env.*.local
+# Framework/platform outputs
+.vercel/
+.netlify/
+.turbo/
+
+# Caches
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+
+# Coverage
+coverage/
+.nyc_output/
 
 # Logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
-# OS / Editor junk
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# OS / Editor
 .DS_Store
 Thumbs.db
 .idea/
-.vscode/
-*.swp
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
 
-# Cache
-.cache/
+# TypeScript
 *.tsbuildinfo
 
-# Misc
-*.zip
-*.tgz
