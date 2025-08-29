@@ -4,11 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 5174",
+    "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "vite preview --port 5174"
+    "start": "vite preview",
+    "build:wsl": "node node_modules/vite/bin/vite.js build --outDir $HOME/WEB20_project_dist",
+    "preview:wsl": "node node_modules/vite/bin/vite.js preview --port 4173 --strictPort --outDir $HOME/WEB20_project_dist"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
