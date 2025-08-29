@@ -43,3 +43,18 @@ A `.github/workflows/vercel.yml` workflow is provided for deployment to Vercel. 
 - `404.html` provides a single page app fallback for client-side routing.
 
 Feel free to adjust the build commands and output directories according to your own tooling.
+
+## Node Version (nvm)
+
+This project targets Node.js 20.
+
+- Version file: `.nvmrc` pins Node to `20.17.0`.
+- Engines: `package.json` sets `"engines": { "node": "^20" }` to help CI and tooling.
+
+Using nvm:
+
+```sh
+nvm install           # installs the version from .nvmrc (20.17.0)
+nvm use               # switches your shell to that version
+nvm alias default 20  # optional: make Node 20 your default
+```

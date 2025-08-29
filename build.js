@@ -33,3 +33,41 @@ if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
 const outPath = path.join(outDir, 'config.js');
 fs.writeFileSync(outPath, `window.CONFIG = ${JSON.stringify(config, null, 2)};\n`);
 console.log('Generated', outPath);
+
+// Also prepare a deployable static folder at ./public for CI/CD (Vercel, Nginx)
+const publicDir = path.join(__dirname, 'public');
+if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
+
+function copyRecursive(src, dest) {
+  if (!fs.existsSync(src)) return;
+  const stat = fs.statSync(src);
+  if (stat.isDirectory()) {
+    if (!fs.existsSync(dest)) fs.mkdirSync(dest, { recursive: true });
+    for (const entry of fs.readdirSync(src)) {
+      copyRecursive(path.join(src, entry), path.join(dest, entry));
+    }
+  } else {
+    const dir = path.dirname(dest);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    const buf = fs.readFileSync(src);
+    fs.writeFileSync(dest, buf);
+  }
+}
+
+// Files and folders to publish
+const publishItems = [
+  'index.html',
+  '404.html',
+  'scripts',
+  'styles',
+  'partials',
+  'attached_assets'
+];
+
+for (const item of publishItems) {
+  const src = path.join(__dirname, item);
+  const dest = path.join(publicDir, item);
+  copyRecursive(src, dest);
+}
+
+console.log('Prepared static output at', publicDir);
