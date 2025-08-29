@@ -11,6 +11,7 @@ type Props = {
 
 const HeroVideo: React.FC<Props> = ({ title, subtitle, ctas = [], height = 'min-h-[70vh]' }) => {
   const [reduceMotion, setReduceMotion] = React.useState(false);
+  const [showFallback, setShowFallback] = React.useState(false);
 
   React.useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -23,21 +24,22 @@ const HeroVideo: React.FC<Props> = ({ title, subtitle, ctas = [], height = 'min-
   return (
     <section
       data-testid="hero"
-      className={`relative z-0 ${height} flex items-center justify-center overflow-hidden text-white opacity-100 visible`}
+      className={`relative ${height} flex items-center justify-center overflow-hidden bg-black text-white`}
     >
-      {!reduceMotion ? (
+      {!(reduceMotion || showFallback) ? (
         <video
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-[70vh] object-cover"
           src="/assets/hero.mp4"
           autoPlay
           muted
           loop
           playsInline
           poster="/assets/hero.jpg"
+          onError={() => setShowFallback(true)}
         />
       ) : (
         <img
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-[70vh] object-cover"
           src="/assets/hero.jpg"
           alt="Hero background"
           loading="lazy"
