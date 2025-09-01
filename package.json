@@ -5,7 +5,7 @@
   "scripts": {
     "build": "node build.js",
     "dev": "npm run build && node serve.js",
-    "start": "node serve.js",
+    "start": "npm run build && node serve.js",
     "dev:project": "npm --prefix project run dev",
     "start:project": "npm --prefix project run start",
     "build:project": "npm --prefix project run build",

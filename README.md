@@ -21,7 +21,7 @@ npx serve dist
 
 ### GitHub Pages
 
-This repository contains a `.github/workflows/pages.yml` workflow that automatically builds the project (if a `package.json` and build script are present) and publishes the `dist/` or `public/` folder to GitHub Pages.  To enable Pages, go to **Settings → Pages** and set the source to **GitHub Actions**.
+This repository contains a `.github/workflows/pages.yml` workflow that automatically builds the project (if a `package.json` and build script are present) and publishes the `dist/` folder to GitHub Pages.  To enable Pages, go to **Settings → Pages** and set the source to **GitHub Actions**.
 
 ### Docker (GHCR)
 
@@ -35,12 +35,23 @@ docker run -p 8080:80 ghcr.io/YOUR_USERNAME/web20:latest
 
 ### Vercel
 
-A `.github/workflows/vercel.yml` workflow is provided for deployment to Vercel.  It installs dependencies, builds the project, and ensures that a `public/` directory exists before deploying using the `amondnet/vercel-action`.  Configure `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` as repository secrets.  See `vercel.json` for build configuration.
+A `.github/workflows/vercel.yml` workflow is provided for deployment to Vercel.  It installs dependencies, builds the project, and ensures that a `dist/` directory exists before deploying using the `amondnet/vercel-action`.  Configure `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` as repository secrets.  See `vercel.json` for build configuration.
+
+## Asset Path Normalization
+
+This project includes automatic asset path resolution that works on both Vercel and GitHub Pages:
+
+- **Vercel**: Assets load from `/assets/`
+- **GitHub Pages**: Assets load from `/REPO_NAME/assets/` (automatically detected)
+- **Local Development**: Assets load from `/assets/`
+
+The system uses `scripts/asset-helper.js` to detect the deployment environment and resolve paths automatically.
 
 ## Support files
 
 - `.nvmrc` pins the Node.js version to v20 for consistency across local and CI environments.
 - `404.html` provides a single page app fallback for client-side routing.
+- `DEPLOYMENT_CONFIG.md` contains detailed deployment and asset configuration information.
 
 Feel free to adjust the build commands and output directories according to your own tooling.
 

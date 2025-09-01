@@ -34,9 +34,17 @@ const outPath = path.join(outDir, 'config.js');
 fs.writeFileSync(outPath, `window.CONFIG = ${JSON.stringify(config, null, 2)};\n`);
 console.log('Generated', outPath);
 
-// Also prepare a deployable static folder at ./public for CI/CD (Vercel, Nginx)
-const publicDir = path.join(__dirname, 'public');
-if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
+// Copy asset helper
+const assetHelperSrc = path.join(__dirname, 'scripts', 'asset-helper.js');
+const assetHelperDest = path.join(outDir, 'asset-helper.js');
+if (fs.existsSync(assetHelperSrc)) {
+  fs.copyFileSync(assetHelperSrc, assetHelperDest);
+  console.log('Copied asset helper');
+}
+
+// Also prepare a deployable static folder at ./dist for CI/CD (Vercel, Nginx)
+const distDir = path.join(__dirname, 'dist');
+if (!fs.existsSync(distDir)) fs.mkdirSync(distDir, { recursive: true });
 
 function copyRecursive(src, dest) {
   if (!fs.existsSync(src)) return;
@@ -61,13 +69,29 @@ const publishItems = [
   'scripts',
   'styles',
   'partials',
-  'attached_assets'
+  'attached_assets',
+  'public'
 ];
+
+// Ensure assets directory exists in dist
+const assetsDir = path.join(distDir, 'public', 'assets');
+if (!fs.existsSync(assetsDir)) {
+  fs.mkdirSync(assetsDir, { recursive: true });
+}
 
 for (const item of publishItems) {
   const src = path.join(__dirname, item);
-  const dest = path.join(publicDir, item);
+  const dest = path.join(distDir, item);
   copyRecursive(src, dest);
 }
 
-console.log('Prepared static output at', publicDir);
+console.log('Prepared static output at', distDir);
+
+// Verify assets were copied
+const assetsPath = path.join(distDir, 'public', 'assets');
+if (fs.existsSync(assetsPath)) {
+  const assetFiles = fs.readdirSync(assetsPath);
+  console.log(`Copied ${assetFiles.length} assets to dist/public/assets/`);
+} else {
+  console.warn('Warning: Assets directory not found in dist/');
+}
