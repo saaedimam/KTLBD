@@ -1,4 +1,22 @@
-FROM docker/whalesay:latest
-LABEL Name=ktlbdreplic1 Version=0.0.1
-RUN apt-get -y update && apt-get install -y fortunes
-CMD ["sh", "-c", "/usr/games/fortune -a | cowsay"]
+FROM node:20-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy application code
+COPY . .
+
+# Build the application
+RUN npm run build
+
+# Expose port
+EXPOSE 5000
+
+# Start the application
+CMD ["npm", "start"]

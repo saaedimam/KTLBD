@@ -6,7 +6,7 @@
       if(!res.ok) throw new Error('Network response was not ok');
       return await res.json();
     }catch(err){
-      console.error('News fetch failed', err);
+      // News fetch failed - could be logged to external service in production
       throw err;
     }
   }

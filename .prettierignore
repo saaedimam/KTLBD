@@ -1,0 +1,8 @@
+node_modules/
+public/
+dist/
+.git/
+.github/
+.vscode/
+attached_assets/
+

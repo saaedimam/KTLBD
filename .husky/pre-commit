@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+set -e
+
+echo "[husky] Running lint-staged on staged files"
+npx --no-install lint-staged || npx lint-staged
+echo "[husky] Done"

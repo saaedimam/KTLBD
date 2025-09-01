@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "vite preview",
+    "build:wsl": "node node_modules/vite/bin/vite.js build --outDir $HOME/WEB20_project_dist",
+    "preview:wsl": "node node_modules/vite/bin/vite.js preview --port 4173 --strictPort --outDir $HOME/WEB20_project_dist"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
@@ -17,6 +20,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
+    "@rollup/rollup-linux-x64-gnu": "^4.49.0",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Users, Settings, Calendar, Award, Shirt, Package, Globe } from 'lucide-react';
+import HeroVideo from '../components/HeroVideo';
 
 const Home = () => {
   const stats = [
@@ -27,32 +28,19 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section 
-        className="relative h-screen flex items-center justify-center bg-gradient-to-r from-black/70 to-black/50"
-        style={{
-          backgroundImage: 'url(https://images.pexels.com/photos/7148448/pexels-photo-7148448.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="container mx-auto px-4 text-center text-white">
-          <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Bangladesh's Eco-Friendly<br />
+      <HeroVideo
+        title={
+          <>
+            Bangladesh's Eco-Friendly
+            <br />
             <span className="text-primary">Textile Exporter</span> – Since 2004
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">
-            Kattali Textile Ltd is a fully compliant manufacturer of woven and knit garments 
-            with global export operations.
-          </p>
-          <Link
-            to="/about"
-            className="inline-flex items-center bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-accent transition-colors duration-200 group"
-          >
-            Explore More
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-      </section>
+          </>
+        }
+        subtitle={
+          'Kattali Textile Ltd is a fully compliant manufacturer of woven and knit garments with global export operations.'
+        }
+        ctas={[{ label: 'Explore More', href: '/about' }]}
+      />
 
       {/* Why Choose Us Section */}
       <section className="py-20 bg-gray-50">

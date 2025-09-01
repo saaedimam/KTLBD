@@ -1,4 +1,5 @@
 import React from 'react';
+import ImageX from '../components/ImageX';
 import { Settings, Users, Package, MapPin, Clock, Award, Shield, Zap } from 'lucide-react';
 
 const Manufacturing = () => {
@@ -187,8 +188,8 @@ const Manufacturing = () => {
               </div>
             </div>
             <div className="relative">
-              <img
-                src="https://images.pexels.com/photos/7148448/pexels-photo-7148448.jpeg?auto=compress&cs=tinysrgb&w=800"
+              <ImageX
+                src="designer-2.jpeg"
                 alt="Manufacturing facility"
                 className="rounded-2xl shadow-2xl"
               />

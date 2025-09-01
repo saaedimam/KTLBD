@@ -61,7 +61,7 @@ async function loadView(route){
     });
   }catch(err){
     target.innerHTML = '<div class="card">Failed to load. Please refresh.</div>';
-    console.error(err);
+    // Error handling - could be logged to external service in production
   }
 }
 

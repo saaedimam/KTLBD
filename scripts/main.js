@@ -1,4 +1,18 @@
 
+// Asset Path Resolution
+function resolveAssetPaths() {
+  if (typeof window.AssetHelper === 'undefined') return;
+  
+  // Find all images with data-src attributes
+  const images = document.querySelectorAll('img[data-src]');
+  images.forEach(img => {
+    const assetName = img.getAttribute('data-src');
+    const resolvedPath = window.AssetHelper.getAssetPath(assetName);
+    img.src = resolvedPath;
+    img.removeAttribute('data-src');
+  });
+}
+
 // Scroll Progress Bar
 function updateScrollProgress() {
   const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
@@ -93,7 +107,7 @@ async function handleFormSubmitEnhanced(e, {endpoint, mailto}) {
       status.textContent = "No endpoint configured. Please set one in the HTML data attributes.";
     }
   } catch(err) {
-    console.error(err);
+    // Error handling - could be logged to external service in production
     status.textContent = "There was an error. Please try again later.";
   }
 }
@@ -161,6 +175,9 @@ function initInvestorChart() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Resolve asset paths first
+  resolveAssetPaths();
+  
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
@@ -310,7 +327,7 @@ async function handleFormSubmit(e, {endpoint, mailto}){
       status.textContent = "No endpoint configured. Please set one in the HTML data attributes.";
     }
   }catch(err){
-    console.error(err);
+    // Error handling - could be logged to external service in production
     status.textContent = "There was an error. Please try again later.";
   }
 }
