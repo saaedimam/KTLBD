@@ -1,0 +1,35 @@
+<!-- Machines and workers illustration -->
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="machineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0EA5A5;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#8B0000;stop-opacity:0.7" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Production machines -->
+  <rect x="100" y="200" width="120" height="80" fill="url(#machineGrad)" rx="10"/>
+  <rect x="250" y="180" width="100" height="100" fill="url(#machineGrad)" rx="10"/>
+  <rect x="380" y="190" width="110" height="90" fill="url(#machineGrad)" rx="10"/>
+  <rect x="520" y="170" width="130" height="110" fill="url(#machineGrad)" rx="10"/>
+  
+  <!-- Workers (simplified figures) -->
+  <circle cx="160" cy="150" r="15" fill="#ffffff" opacity="0.8"/>
+  <rect x="150" y="165" width="20" height="35" fill="#ffffff" opacity="0.8" rx="3"/>
+  
+  <circle cx="300" cy="140" r="15" fill="#ffffff" opacity="0.8"/>
+  <rect x="290" y="155" width="20" height="35" fill="#ffffff" opacity="0.8" rx="3"/>
+  
+  <circle cx="440" cy="145" r="15" fill="#ffffff" opacity="0.8"/>
+  <rect x="430" y="160" width="20" height="35" fill="#ffffff" opacity="0.8" rx="3"/>
+  
+  <!-- Production flow lines -->
+  <path d="M220 240 L250 240" stroke="#0EA5A5" stroke-width="3" opacity="0.6"/>
+  <path d="M350 240 L380 240" stroke="#0EA5A5" stroke-width="3" opacity="0.6"/>
+  <path d="M490 240 L520 240" stroke="#0EA5A5" stroke-width="3" opacity="0.6"/>
+  
+  <!-- Stats visualization -->
+  <text x="400" y="50" font-family="Inter" font-size="24" font-weight="bold" text-anchor="middle" fill="#0EA5A5">Production Statistics</text>
+  <rect x="50" y="350" width="700" height="100" fill="#1e293b" opacity="0.8" rx="10"/>
+  <text x="400" y="380" font-family="Inter" font-size="16" text-anchor="middle" fill="#ffffff">12 Production Lines • 850+ Workers • 2.5M Units/Year</text>
+</svg>
