@@ -16,27 +16,19 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: '20'
-    # Install dependencies if package.json exists
     - name: Install dependencies
       run: |
-        if [ -f package.json ]; then
-          npm ci
-        fi
-    # Build if package.json and build script exist
+        npm install
+        cd project && npm install
     - name: Build
       run: |
-        if [ -f package.json ] && npm run | grep -q "build"; then
-          npm run build
-        fi
+        npm run build
     - name: Setup Pages
       uses: actions/configure-pages@v5
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@3
       with:
-        # Prefer dist/ but fallback to public/
-        path: |
-          dist
-          public
+        path: dist
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4

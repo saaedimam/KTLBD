@@ -14,14 +14,11 @@ jobs:
         node-version: '20'
     - name: Install dependencies
       run: |
-        if [ -f package.json ]; then
-          npm ci
-        fi
+        npm install
+        cd project && npm install
     - name: Build project
       run: |
-        if [ -f package.json ] && npm run | grep -q "build"; then
-          npm run build
-        fi
+        npm run build
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
