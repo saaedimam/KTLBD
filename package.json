@@ -1,0 +1,18 @@
+{
+  "name": "web20-project-workspace",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Web20 Project Workspace",
+  "workspaces": [
+    "project",
+    "client"
+  ],
+  "scripts": {
+    "dev": "cd project && npm run dev",
+    "build": "cd project && npm run build",
+    "preview": "cd project && npm run preview",
+    "lint": "cd project && npm run lint"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}

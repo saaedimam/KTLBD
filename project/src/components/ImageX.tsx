@@ -30,8 +30,8 @@ const ImageX: React.FC<Props> = ({ src, alt, className, width, height }) => {
       src={absoluteSrc}
       alt={alt}
       className={className}
-      width={width as any}
-      height={height as any}
+      width={width}
+      height={height}
       loading="lazy"
       decoding="async"
       fetchPriority="low"
