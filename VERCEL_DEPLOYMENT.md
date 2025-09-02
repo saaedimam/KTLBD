@@ -18,7 +18,7 @@ Vercel will automatically detect these settings:
 - **Framework Preset**: Vite
 - **Build Command**: `npm run build`
 - **Output Directory**: `project/dist`
-- **Install Command**: `npm run install:all`
+- **Install Command**: `npm install && cd project && npm install`
 
 ### 3. Environment Variables (Optional)
 No environment variables required for basic deployment.
@@ -72,7 +72,7 @@ VERCEL_PROJECT_ID=your_project_id_here
 ### Local Development
 ```bash
 # Install all dependencies
-npm run install:all
+npm install && cd project && npm install
 
 # Start development server
 npm run dev
@@ -85,7 +85,7 @@ npm run preview
 ```
 
 ### Vercel Build Process
-1. **Install**: `npm run install:all`
+1. **Install**: `npm install && cd project && npm install`
 2. **Build**: `npm run build`
 3. **Output**: `project/dist/`
 4. **Deploy**: Automatically to Vercel
@@ -106,6 +106,7 @@ npm run preview
 - **"Build command failed"**: Check `npm run build` works locally
 - **"Output directory not found"**: Verify `project/dist/` exists
 - **"Framework not detected"**: Ensure `vercel.json` is present
+- **"Missing script"**: Use direct install commands, not npm scripts
 
 ## 📊 Performance Optimization
 
