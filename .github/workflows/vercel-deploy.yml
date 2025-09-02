@@ -19,7 +19,9 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm run install:all
+        run: |
+          npm install
+          cd project && npm install
 
       - name: Build project
         run: npm run build
