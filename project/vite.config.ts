@@ -34,4 +34,20 @@ export default defineConfig({
     port: 4173,
     host: true,
   },
+  build: {
+    // Ensure assets are properly copied and optimized
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico|mp4|webm|ogg|mp3|wav|flac|aac|woff|woff2|eot|ttf|otf/i.test(ext)) {
+            return `assets/[name]-[hash][extname]`;
+          }
+          return `assets/[name]-[hash][extname]`;
+        },
+      },
+    },
+  },
 });

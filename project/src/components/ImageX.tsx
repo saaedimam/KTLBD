@@ -14,10 +14,10 @@ const ImageX: React.FC<Props> = ({ src, alt, className, width, height }) => {
   // Build absolute path to public assets
   const absoluteSrc = React.useMemo(() => {
     if (!src) return '';
-    // If already absolute or starts with '/assets', use as-is
+    // If already absolute or starts with /assets, use as-is
     if (src.startsWith('http://') || src.startsWith('https://')) return src;
-    if (src.startsWith('/assets/')) return src;
-    return `/assets/${src}`;
+    if (src.startsWith('./assets/') || src.startsWith('/assets/')) return src;
+    return `./assets/${src}`;
   }, [src]);
 
   if (errored || !absoluteSrc) {

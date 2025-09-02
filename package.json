@@ -8,7 +8,7 @@
     "build": "cd project && npm run build",
     "preview": "cd project && npm run preview",
     "lint": "cd project && npm run lint",
-    "install:all": "cd project && npm install"
+    "install:all": "npm install && cd project && npm install"
   },
   "devDependencies": {},
   "dependencies": {}

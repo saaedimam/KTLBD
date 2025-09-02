@@ -63,7 +63,7 @@ const Sustainability = () => {
       <section 
         className="relative py-32 bg-gradient-to-r from-black/70 to-black/50 flex items-center"
         style={{
-          backgroundImage: 'url(/assets/hero.jpeg)',
+          backgroundImage: 'url(./assets/hero.jpeg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
