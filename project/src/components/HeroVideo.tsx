@@ -29,18 +29,18 @@ const HeroVideo: React.FC<Props> = ({ title, subtitle, ctas = [], height = 'min-
       {!(reduceMotion || showFallback) ? (
         <video
           className="absolute inset-0 w-full h-full object-cover"
-          src="/assets/hero.mp4"
+          src="./assets/hero.mp4"
           autoPlay
           muted
           loop
           playsInline
-          poster="/assets/hero.jpg"
+          poster="./assets/hero.jpg"
           onError={() => setShowFallback(true)}
         />
       ) : (
         <img
           className="absolute inset-0 w-full h-full object-cover"
-          src="/assets/hero.jpg"
+          src="./assets/hero.jpg"
           alt="Hero background"
           loading="lazy"
           decoding="async"

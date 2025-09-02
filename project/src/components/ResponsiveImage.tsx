@@ -17,7 +17,7 @@ type ResponsiveImageProps = {
  * - Adds lazy loading + async decoding by default (similar benefits to next/image).
  * - Accepts an optional sizes prop to hint layout across breakpoints.
  * - If width/height are provided, we set attributes to reduce CLS.
- * - Resolves relative asset paths into "/assets/..." under public/.
+ * - Resolves relative asset paths into "./assets/..." under public/.
  */
 const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   src,
@@ -35,8 +35,8 @@ const ResponsiveImage: React.FC<ResponsiveImageProps> = ({
   const absoluteSrc = React.useMemo(() => {
     if (!src) return '';
     if (src.startsWith('http://') || src.startsWith('https://')) return src;
-    if (src.startsWith('/assets/')) return src;
-    return `/assets/${src}`;
+    if (src.startsWith('./assets/') || src.startsWith('/assets/')) return src;
+    return `./assets/${src}`;
   }, [src]);
 
   if (errored || !absoluteSrc) return null;

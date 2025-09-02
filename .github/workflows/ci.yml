@@ -22,21 +22,15 @@ jobs:
       - name: Install root deps
         run: npm install
 
-      - name: Lint (root)
-        run: npm run lint --if-present
-
-      - name: Build (root)
-        run: npm run build --if-present
-
       - name: Install project deps
         working-directory: project
         run: npm install
 
       - name: Lint (project)
         working-directory: project
-        run: npm run lint --if-present
+        run: npm run lint
 
       - name: Build (project)
         working-directory: project
-        run: npm run build --if-present
+        run: npm run build
 

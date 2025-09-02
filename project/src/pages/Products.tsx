@@ -68,7 +68,7 @@ const Products = () => {
       <section 
         className="relative py-32 bg-gradient-to-r from-black/70 to-black/50 flex items-center"
         style={{
-          backgroundImage: 'url(/assets/designer-2.jpeg)',
+          backgroundImage: 'url(./assets/designer-2.jpeg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
