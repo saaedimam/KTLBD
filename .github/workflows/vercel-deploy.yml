@@ -36,8 +36,19 @@ jobs:
           echo "Build size: $(du -sh project/dist/)"
           ls -la project/dist/
 
+      - name: Check Vercel secrets
+        id: check-secrets
+        run: |
+          if [ -n "${{ secrets.VERCEL_TOKEN }}" ] && [ -n "${{ secrets.VERCEL_ORG_ID }}" ] && [ -n "${{ secrets.VERCEL_PROJECT_ID }}" ]; then
+            echo "secrets-available=true" >> $GITHUB_OUTPUT
+            echo "✅ Vercel secrets are configured"
+          else
+            echo "secrets-available=false" >> $GITHUB_OUTPUT
+            echo "⚠️ Vercel secrets not configured, skipping deployment"
+          fi
+
       - name: Deploy to Vercel
-        if: secrets.VERCEL_TOKEN != '' && secrets.VERCEL_ORG_ID != '' && secrets.VERCEL_PROJECT_ID != ''
+        if: steps.check-secrets.outputs.secrets-available == 'true'
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
@@ -48,9 +59,13 @@ jobs:
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
-      - name: Skip deployment (no secrets)
-        if: secrets.VERCEL_TOKEN == '' || secrets.VERCEL_ORG_ID == '' || secrets.VERCEL_PROJECT_ID == ''
+      - name: Deployment skipped
+        if: steps.check-secrets.outputs.secrets-available == 'false'
         run: |
-          echo "Vercel secrets not configured, skipping deployment"
-          echo "Please configure VERCEL_TOKEN, VERCEL_ORG_ID, and VERCEL_PROJECT_ID as repository secrets"
+          echo "ℹ️ Vercel deployment skipped - secrets not configured"
+          echo "To enable deployment, configure these repository secrets:"
+          echo "- VERCEL_TOKEN"
+          echo "- VERCEL_ORG_ID" 
+          echo "- VERCEL_PROJECT_ID"
+          echo ""
           echo "Or deploy manually from Vercel dashboard"
