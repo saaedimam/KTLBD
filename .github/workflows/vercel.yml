@@ -19,6 +19,14 @@ jobs:
     - name: Build project
       run: |
         npm run build
+    - name: Verify build output
+      run: |
+        if [ ! -d "project/dist" ]; then
+          echo "Build failed: project/dist directory not found"
+          exit 1
+        fi
+        echo "Build successful! Found project/dist directory"
+        ls -la project/dist/
     - name: Deploy to Vercel
       uses: amondnet/vercel-action@v25
       with:
@@ -26,6 +34,6 @@ jobs:
         vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
         vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
         vercel-args: '--prod'
-        working-directory: dist
+        working-directory: project/dist
       env:
         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}

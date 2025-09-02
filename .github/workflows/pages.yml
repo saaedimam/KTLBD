@@ -23,12 +23,20 @@ jobs:
     - name: Build
       run: |
         npm run build
+    - name: Verify build output
+      run: |
+        if [ ! -d "project/dist" ]; then
+          echo "Build failed: project/dist directory not found"
+          exit 1
+        fi
+        echo "Build successful! Found project/dist directory"
+        ls -la project/dist/
     - name: Setup Pages
       uses: actions/configure-pages@v5
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@3
+      uses: actions/upload-pages-artifact@v3
       with:
-        path: dist
+        path: project/dist
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4

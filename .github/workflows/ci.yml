@@ -19,32 +19,27 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install root deps
+      - name: Install root dependencies
         run: npm install
 
-      - name: Install project deps
+      - name: Install project dependencies
         working-directory: project
         run: npm install
 
-      - name: Lint (root)
-        run: npm run lint
-
-      - name: Build (root)
-        run: npm run build
-
-      - name: Lint (project)
+      - name: Lint project
         working-directory: project
         run: npm run lint
 
-      - name: Build (project)
+      - name: Build project
         working-directory: project
         run: npm run build
 
       - name: Verify build output
         run: |
-          if [ ! -d "dist" ]; then
-            echo "Build failed: dist directory not found"
+          if [ ! -d "project/dist" ]; then
+            echo "Build failed: project/dist directory not found"
             exit 1
           fi
-          echo "Build successful! Found dist directory"
+          echo "Build successful! Found project/dist directory"
+          ls -la project/dist/
 

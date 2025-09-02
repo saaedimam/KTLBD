@@ -19,6 +19,14 @@ jobs:
     - name: Build project
       run: |
         npm run build
+    - name: Verify build output
+      run: |
+        if [ ! -d "project/dist" ]; then
+          echo "Build failed: project/dist directory not found"
+          exit 1
+        fi
+        echo "Build successful! Found project/dist directory"
+        ls -la project/dist/
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
     - name: Set up Docker Buildx
