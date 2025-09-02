@@ -19,18 +19,16 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install root dependencies
-        run: npm install
+      - name: Install dependencies
+        run: |
+          npm install
+          cd project && npm install
 
-      - name: Install project dependencies
-        working-directory: project
-        run: npm install
-
-      - name: Lint project
+      - name: Lint
         working-directory: project
         run: npm run lint
 
-      - name: Build project
+      - name: Build
         working-directory: project
         run: npm run build
 
@@ -41,5 +39,6 @@ jobs:
             exit 1
           fi
           echo "Build successful! Found project/dist directory"
+          echo "Build size: $(du -sh project/dist/)"
           ls -la project/dist/
 
