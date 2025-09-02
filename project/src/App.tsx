@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -12,6 +12,11 @@ import Contact from './pages/Contact';
 import FloatingCTA from './components/FloatingCTA';
 
 function App() {
+  useEffect(() => {
+    console.log('App component mounted successfully');
+    console.log('Current location:', window.location.href);
+  }, []);
+
   return (
     <Router basename={import.meta.env.BASE_URL}>
       <div className="min-h-screen bg-white font-body">
