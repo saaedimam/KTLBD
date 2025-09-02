@@ -1,17 +1,14 @@
 {
-  "name": "web20-project-workspace",
+  "name": "ktlbd-workspace",
   "private": true,
   "version": "1.0.0",
-  "description": "Web20 Project Workspace",
-  "workspaces": [
-    "project",
-    "client"
-  ],
+  "description": "Kattali Textile Ltd - React Application Workspace",
   "scripts": {
     "dev": "cd project && npm run dev",
     "build": "cd project && npm run build",
     "preview": "cd project && npm run preview",
-    "lint": "cd project && npm run lint"
+    "lint": "cd project && npm run lint",
+    "install:all": "cd project && npm install"
   },
   "devDependencies": {},
   "dependencies": {}
