@@ -1,0 +1,54 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm run install:all
+
+      - name: Build project
+        run: npm run build
+
+      - name: Verify build output
+        run: |
+          if [ ! -d "project/dist" ]; then
+            echo "Build failed: project/dist directory not found"
+            exit 1
+          fi
+          echo "Build successful! Found project/dist directory"
+          echo "Build size: $(du -sh project/dist/)"
+          ls -la project/dist/
+
+      - name: Deploy to Vercel
+        if: secrets.VERCEL_TOKEN != '' && secrets.VERCEL_ORG_ID != '' && secrets.VERCEL_PROJECT_ID != ''
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          working-directory: project/dist
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Skip deployment (no secrets)
+        if: secrets.VERCEL_TOKEN == '' || secrets.VERCEL_ORG_ID == '' || secrets.VERCEL_PROJECT_ID == ''
+        run: |
+          echo "Vercel secrets not configured, skipping deployment"
+          echo "Please configure VERCEL_TOKEN, VERCEL_ORG_ID, and VERCEL_PROJECT_ID as repository secrets"
+          echo "Or deploy manually from Vercel dashboard"
