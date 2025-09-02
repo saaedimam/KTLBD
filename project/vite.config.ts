@@ -27,9 +27,8 @@ export default defineConfig({
       '.id.repl.co',
     ],
   },
-  // Use default base at site root. If deploying under a subpath, set `base` accordingly
-  // and pass basename to BrowserRouter (see App.tsx).
-  base: '',
+  // Set base to root for Vercel deployment
+  base: '/',
   preview: {
     port: 4173,
     host: true,
