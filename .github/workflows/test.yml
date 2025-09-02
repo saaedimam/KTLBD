@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          cd project && npm install
+
+      - name: Test build
+        run: |
+          npm run build
+          echo "Build completed successfully"
+
+      - name: Verify output
+        run: |
+          if [ -d "project/dist" ]; then
+            echo "✅ Build output verified"
+            ls -la project/dist/
+          else
+            echo "❌ Build output not found"
+            exit 1
+          fi
