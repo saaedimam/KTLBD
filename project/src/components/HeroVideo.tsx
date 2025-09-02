@@ -28,7 +28,7 @@ const HeroVideo: React.FC<Props> = ({ title, subtitle, ctas = [], height = 'min-
     >
       {!(reduceMotion || showFallback) ? (
         <video
-          className="w-full h-[70vh] object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
           src="/assets/hero.mp4"
           autoPlay
           muted
@@ -39,7 +39,7 @@ const HeroVideo: React.FC<Props> = ({ title, subtitle, ctas = [], height = 'min-
         />
       ) : (
         <img
-          className="w-full h-[70vh] object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
           src="/assets/hero.jpg"
           alt="Hero background"
           loading="lazy"
@@ -49,7 +49,7 @@ const HeroVideo: React.FC<Props> = ({ title, subtitle, ctas = [], height = 'min-
 
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50" />
 
-      <div className="relative container mx-auto px-4 text-center">
+      <div className="relative z-10 container mx-auto px-4 text-center">
         <h1 className="font-heading text-4xl md:text-6xl font-bold mb-6 leading-tight">{title}</h1>
         {subtitle && (
           <p className="text-xl md:text-2xl mb-8 max-w-4xl mx-auto leading-relaxed">{subtitle}</p>

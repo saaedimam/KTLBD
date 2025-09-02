@@ -11,87 +11,87 @@ const Gallery = () => {
   const images = [
     {
       id: 1,
-      src: 'https://images.pexels.com/photos/7148448/pexels-photo-7148448.jpeg?auto=compress&cs=tinysrgb&w=800',
+      src: 'hero.jpeg',
       category: 'Factory Floor',
-      title: 'Modern Manufacturing Facility',
-      description: 'State-of-the-art production floor with advanced machinery'
+      title: 'Hero Manufacturing Facility',
+      description: 'Our state-of-the-art production facility showcasing modern manufacturing capabilities'
     },
     {
       id: 2,
-      src: 'https://images.pexels.com/photos/7148457/pexels-photo-7148457.jpeg?auto=compress&cs=tinysrgb&w=800',
-      category: 'Workers',
-      title: 'Skilled Operators at Work',
-      description: 'Our experienced team ensuring quality production'
+      src: 'designer-1.jpeg',
+      category: 'Products',
+      title: 'Premium Textile Products',
+      description: 'High-quality garments and textiles ready for international markets'
     },
     {
       id: 3,
-      src: 'https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=800',
-      category: 'Products',
-      title: 'Premium Men\'s Wear',
-      description: 'High-quality garments ready for export'
+      src: 'designer-2.jpeg',
+      category: 'Factory Floor',
+      title: 'Advanced Manufacturing Equipment',
+      description: 'Cutting-edge machinery and production lines for efficient manufacturing'
     },
     {
       id: 4,
-      src: 'https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=800',
+      src: 'hero.jpg',
       category: 'Products',
-      title: 'Women\'s Fashion Collection',
-      description: 'Elegant designs for international markets'
+      title: 'Textile Excellence',
+      description: 'Superior quality textiles and finished products'
     },
     {
       id: 5,
-      src: 'https://images.pexels.com/photos/8148589/pexels-photo-8148589.jpeg?auto=compress&cs=tinysrgb&w=800',
-      category: 'Products',
-      title: 'Children\'s Clothing Line',
-      description: 'Safe and comfortable clothing for kids'
+      src: 'designer-1.jpeg',
+      category: 'Workers',
+      title: 'Skilled Workforce',
+      description: 'Our experienced team ensuring quality production standards'
     },
     {
       id: 6,
-      src: 'https://images.pexels.com/photos/3962294/pexels-photo-3962294.jpeg?auto=compress&cs=tinysrgb&w=800',
+      src: 'designer-2.jpeg',
       category: 'Factory Floor',
       title: 'Quality Control Department',
-      description: 'Rigorous quality checking processes'
+      description: 'Rigorous quality checking processes and standards'
     },
     {
       id: 7,
-      src: 'https://images.pexels.com/photos/317157/pexels-photo-317157.jpeg?auto=compress&cs=tinysrgb&w=800',
+      src: 'hero.jpeg',
       category: 'Products',
-      title: 'Sportswear Collection',
-      description: 'Athletic wear and swim trunks'
+      title: 'Sustainable Textiles',
+      description: 'Eco-friendly and sustainable textile manufacturing'
     },
     {
       id: 8,
-      src: 'https://images.pexels.com/photos/5691630/pexels-photo-5691630.jpeg?auto=compress&cs=tinysrgb&w=800',
+      src: 'designer-1.jpeg',
       category: 'Workers',
       title: 'Team Collaboration',
-      description: 'Coordinated teamwork for efficient production'
+      description: 'Coordinated teamwork for efficient production processes'
     },
     {
       id: 9,
-      src: 'https://images.pexels.com/photos/6984992/pexels-photo-6984992.jpeg?auto=compress&cs=tinysrgb&w=800',
+      src: 'designer-2.jpeg',
       category: 'CSR Activities',
-      title: 'Community Outreach Program',
-      description: 'Supporting local community development'
+      title: 'Community Development',
+      description: 'Supporting local community and social responsibility initiatives'
     },
     {
       id: 10,
-      src: 'https://images.pexels.com/photos/7148448/pexels-photo-7148448.jpeg?auto=compress&cs=tinysrgb&w=800',
+      src: 'hero.jpg',
       category: 'Factory Floor',
-      title: 'Cutting Department',
-      description: 'Precision cutting for optimal fabric utilization'
+      title: 'Production Excellence',
+      description: 'Advanced production techniques and quality assurance'
     },
     {
       id: 11,
-      src: 'https://images.pexels.com/photos/6303750/pexels-photo-6303750.jpeg?auto=compress&cs=tinysrgb&w=800',
+      src: 'designer-1.jpeg',
       category: 'CSR Activities',
-      title: 'Environmental Initiative',
-      description: 'Green practices and sustainability efforts'
+      title: 'Environmental Sustainability',
+      description: 'Green practices and environmental protection efforts'
     },
     {
       id: 12,
-      src: 'https://images.pexels.com/photos/3621104/pexels-photo-3621104.jpeg?auto=compress&cs=tinysrgb&w=800',
+      src: 'designer-2.jpeg',
       category: 'Workers',
-      title: 'Training Session',
-      description: 'Continuous skill development programs'
+      title: 'Professional Development',
+      description: 'Continuous training and skill development programs'
     },
   ];
 
@@ -124,7 +124,7 @@ const Gallery = () => {
       <section 
         className="relative py-32 bg-gradient-to-r from-black/70 to-black/50 flex items-center"
         style={{
-          backgroundImage: 'url(https://images.pexels.com/photos/7148448/pexels-photo-7148448.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
+          backgroundImage: 'url(/assets/hero.jpeg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

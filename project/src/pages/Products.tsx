@@ -13,7 +13,7 @@ const Products = () => {
         { name: 'Shorts', description: 'Comfortable shorts for leisure and sports' },
       ],
       icon: Shirt,
-      image: 'https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=800'
+      image: 'designer-1.jpeg'
     },
     {
       category: "Women's Wear",
@@ -25,7 +25,7 @@ const Products = () => {
         { name: 'Activewear', description: 'Comfortable athletic and leisure wear' },
       ],
       icon: Shirt,
-      image: 'https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=800'
+      image: 'designer-2.jpeg'
     },
     {
       category: "Children's Wear",
@@ -37,7 +37,7 @@ const Products = () => {
         { name: 'School Uniforms', description: 'Durable uniforms for educational institutions' },
       ],
       icon: Package,
-      image: 'https://images.pexels.com/photos/8148589/pexels-photo-8148589.jpeg?auto=compress&cs=tinysrgb&w=800'
+      image: 'hero.jpeg'
     },
     {
       category: "Sportswear",
@@ -49,7 +49,7 @@ const Products = () => {
         { name: 'Leisure Wear', description: 'Comfortable clothing for relaxation' },
       ],
       icon: Package,
-      image: 'https://images.pexels.com/photos/317157/pexels-photo-317157.jpeg?auto=compress&cs=tinysrgb&w=800'
+      image: 'hero.jpg'
     }
   ];
 
@@ -68,7 +68,7 @@ const Products = () => {
       <section 
         className="relative py-32 bg-gradient-to-r from-black/70 to-black/50 flex items-center"
         style={{
-          backgroundImage: 'url(https://images.pexels.com/photos/7148448/pexels-photo-7148448.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)',
+          backgroundImage: 'url(/assets/designer-2.jpeg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
